@@ -103,5 +103,51 @@ AC-1 → R-2 → E-4 (INT-01:P06, P17, P21)
 AC-2 → R-3 → E-1 (INT-01:P04), E-4 (INT-01:P06, P17, P21)
 AC-3 → R-4 → E-2 (INT-01:P13), E-3 (INT-01:P09, P13), E-5 (INT-01:P17, P21)
 Open items left open, not settled by these tests: Q-1 (actual grace value / what students are told), Q-2 (how technicians signal a kit is ready). No test ID beyond AC-1/AC-2/AC-3 was assigned.
-
 Risks:
+Dataset:   Pytest 6a5a21c877e7d84bd68d0b4fa3afc46359b92488
+result:    Passed 4 tests 
+========================================================== test session starts ==========================================================
+platform darwin -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0 -- /Users/ga/cs690/Assignment-3/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/ga/cs690/Assignment-3
+configfile: pyproject.toml
+testpaths: tests
+collected 4 items                                                                                                                       
+
+tests/test_reference_smoke.py::test_reference_module_imports_and_uses_configured_policy PASSED                                    [ 25%]
+tests/test_student_acceptance.py::test_ac1_checked_in_reservation_stays_active_past_grace PASSED                                  [ 50%]
+tests/test_student_acceptance.py::test_ac2_active_staff_hold_blocks_release PASSED                                                [ 75%]
+tests/test_student_acceptance.py::test_ac3_releasable_but_not_prepared_is_not_offered PASSED                                      [100%]
+
+=========================================================== 4 passed in 0.01s ===========================================================
+changed:   nothing
+
+# Entry 04
+
+Artifact: The first push of branch main from the local Assignment-3 repository to https://github.com/ap3478/CS690-Assignment3.git, and the git credential setup on this Mac.
+Tool: Claude Opus 4.8  2026-10-17, approx. 14:41–14:44 ET
+Prompt: Pasted the failed git push -u origin main output with the authentication error.
+Review: The push error output: GitHub rejected the credential because password authentication is not supported for git over HTTPS.
+Changed: Nothing directly. The output was three alternative fixes for the user to run.
+Option 1, chosen: install the GitHub CLI, run gh auth login (GitHub.com, HTTPS, browser login), then gh auth setup-git so git uses the CLI's credentials.
+Option 2: a fine-grained personal access token, after erasing the cached Keychain credential.
+Option 3: an ed25519 SSH key and switching the remote to the SSH URL.
+Rejected: Option 2 and Option 3
+Checks: Ran brew install gh, gh auth install and followed the commands to authotise github.com
+Evidence: it push -u origin main
+Enumerating objects: 2033, done.
+Counting objects: 100% (2033/2033), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (1975/1975), done.
+Writing objects: 100% (2033/2033), 7.76 MiB | 9.13 M
+Risk:gh auth login grants an OAuth token with broad scopes to this Mac. Anyone with access to this user account can push to any repository xxxx can write to.
+
+
+## Entry 05
+Artifact: AI Ambiguity checks
+Tool: Cloud Opus 2026-10-17, approx. 16:12–14:44 ET
+Prompt: Audit the attached interview transcript as a requirements reviewer. Find ambiguity, incompleteness, and direct contradictions that could cause an implementation team or coding agent to invent product behavior. Return at most 8 findings. For each finding, provide: a short label, the paragraph ID or IDs, a short excerpt, the defect type, and one sentence explaining what decision remains unsafe. Do not resolve the issue, do not add product facts, and do not use synthetic-user material as evidence.
+Review: Read the Prompt and referenced the interview.txt file provided as reference
+Checks: Ran analysis on the interview.txt based on the requirements provided in the prompt
+Evidence: see results/ambiguity_audit.md
+Risks: These results may vary depending on the model 
