@@ -1,1 +1,4 @@
 evidence_id,requirement_id,acceptance_criterion_id,test_name
+E-4,R2,AC-1,test_ac1_checked_in_reservation_stays_active_past_grace
+E-1, E-4,R3,AC-2,test_ac2_active_staff_hold_blocks_release
+E-2, E-3, E-5,AC-3,R4,test_ac3_releasable_but_not_prepared_is_not_offered
